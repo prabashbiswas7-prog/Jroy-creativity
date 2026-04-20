@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Services — JRoy Creativity</title>
+<meta name="description" content="Creative graphic design services — Logo & Brand Identity, Social Media, Print, UI Design, and Brochures.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── DESIGN PAGE SPECIFIC ── */
+.services-list { display:flex; flex-direction:column; }
+.service-row {
+  display:grid; grid-template-columns:72px 1fr auto;
+  align-items:center; gap:40px;
+  padding:40px 0;
+  border-bottom:1px solid var(--border);
+  transition:padding-left .35s, background .2s;
+  cursor:default;
+}
+.service-row:hover { padding-left:12px; }
+.service-row:first-child { border-top:1px solid var(--border); }
+.svc-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px; font-weight:300;
+  color:var(--gold); opacity:0.3;
+}
+.svc-body {}
+.svc-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,3vw,30px); font-weight:400;
+  color:var(--black); margin-bottom:6px;
+}
+.svc-desc {
+  font-size:12px; font-weight:300; line-height:1.8;
+  color:var(--charcoal); max-width:600px;
+}
+.svc-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.svc-tag {
+  font-size:8px; font-weight:600; letter-spacing:1.5px;
+  text-transform:uppercase; padding:3px 10px;
+  border:1px solid var(--border); color:var(--charcoal);
+}
+.svc-cta {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; text-decoration:none;
+  padding:11px 22px; border:1px solid var(--gold);
+  color:var(--gold); white-space:nowrap;
+  transition:all .2s;
+}
+.svc-cta:hover { background:var(--gold); color:var(--white); }
+
+/* ── PROCESS ── */
+.process-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+  background:rgba(255,255,255,0.04);
+}
+.process-step {
+  padding:40px 32px;
+  border-right:1px solid rgba(255,255,255,0.07);
+  position:relative;
+}
+.process-step:last-child { border-right:none; }
+.process-step::after {
+  content:'→'; position:absolute; right:-10px; top:42px;
+  color:var(--gold); font-size:14px; opacity:0.35;
+  z-index:1;
+}
+.process-step:last-child::after { display:none; }
+.ps-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:56px; font-weight:300;
+  color:var(--gold); opacity:0.15; line-height:1;
+  margin-bottom:12px;
+}
+.ps-title {
+  font-size:10px; font-weight:700; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--white);
+  margin-bottom:10px;
+}
+.ps-desc {
+  font-size:11.5px; font-weight:300; line-height:1.75;
+  color:rgba(255,255,255,0.38);
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+}
+.testi-card {
+  background:var(--white); padding:36px 30px;
+  border-bottom:2px solid var(--gold);
+}
+.testi-stars {
+  color:var(--gold); font-size:12px; letter-spacing:2px;
+  margin-bottom:16px;
+}
+.testi-text {
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px; font-style:italic; font-weight:300;
+  color:var(--charcoal); line-height:1.6; margin-bottom:20px;
+}
+.testi-author {
+  font-size:10px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--black);
+}
+.testi-role {
+  font-size:10px; font-weight:300;
+  color:var(--charcoal); margin-top:2px;
+}
+
+@media (max-width:900px) {
+  .service-row { grid-template-columns:52px 1fr; gap:20px; }
+  .svc-cta { display:none; }
+  .process-grid { grid-template-columns:repeat(2,1fr); }
+  .testimonials-grid { grid-template-columns:1fr; }
+}
+@media (max-width:600px) {
+  .process-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<main>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg-text">Design</div>
+    <div class="page-hero-label">Services</div>
+    <h1 class="page-hero-title anim-fade-up">
+      Creative Design<br>that <em>Speaks</em><br>Your Brand
+    </h1>
+    <p class="page-hero-sub anim-fade-up anim-delay-1">
+      From the spark of a concept to the final deliverable — design work that is strategic, beautiful, and built for your audience.
+    </p>
+  </div>
+
+  <!-- SERVICES LIST -->
+  <section class="section">
+    <div class="section-eyebrow">What I Offer</div>
+    <h2 class="section-title">Every service, crafted<br>with <em>intention</em></h2>
+    <div class="services-list" id="servicesList">
+      <!-- injected by JS -->
+    </div>
+    <div style="margin-top:48px; text-align:center;">
+      <a href="contact.html" class="btn btn-black">Start a Project →</a>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section section--dark">
+    <div class="section-eyebrow section-eyebrow--light">How It Works</div>
+    <h2 class="section-title section-title--light">Simple, clear,<br><em>collaborative</em></h2>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="ps-num">01</div>
+        <div class="ps-title">Discovery</div>
+        <div class="ps-desc">We chat on WhatsApp or email to understand your brand, goals, and vision clearly.</div>
+      </div>
+      <div class="process-step">
+        <div class="ps-num">02</div>
+        <div class="ps-title">Proposal</div>
+        <div class="ps-desc">I share a clear scope, timeline, and pricing. No hidden costs, no surprises.</div>
+      </div>
+      <div class="process-step">
+        <div class="ps-num">03</div>
+        <div class="ps-title">Design</div>
+        <div class="ps-desc">Creation begins. You get progress updates and can share feedback at each stage.</div>
+      </div>
+      <div class="process-step">
+        <div class="ps-num">04</div>
+        <div class="ps-title">Delivery</div>
+        <div class="ps-desc">Final files delivered in all formats — print-ready, web-optimised, and yours forever.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="section-eyebrow">Client Words</div>
+    <h2 class="section-title">What clients<br><em>say</em></h2>
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"The logo JRoy made for us was exactly what we imagined — and better. Incredibly patient and professional."</div>
+        <div class="testi-author">Riya M.</div>
+        <div class="testi-role">Boutique Owner</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Social media designs were on point. Our engagement went up noticeably after the rebrand."</div>
+        <div class="testi-author">Arjun K.</div>
+        <div class="testi-role">Startup Founder</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Ordered the UI kit for our app. Clean, modern, delivered fast. Will hire again without hesitation."</div>
+        <div class="testi-author">Priya S.</div>
+        <div class="testi-role">Product Manager</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div class="cta-strip-text">Let's create<br>something great</div>
+    <a id="designCta" href="#" class="btn btn-white-fill">Chat on WhatsApp →</a>
+  </div>
+
+</main>
+
+<script src="js/main.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  injectNav('design');
+  injectFooter();
+
+  const services = [
+    {
+      name:'Logo & Brand Identity',
+      desc:'A complete brand identity system — logo mark, wordmark, colour palette, typography, and usage guide. Built to communicate who you are at a glance.',
+      tags:['Logo','Wordmark','Brand Guide','Colour Palette','Typography'],
+      wa:'Hi! I\'m interested in Logo & Brand Identity design.'
+    },
+    {
+      name:'Social Media Design',
+      desc:'Post templates, story kits, reel covers, and highlight icons. Get a cohesive social presence that grows your audience and matches your brand.',
+      tags:['Instagram','Facebook','Reels','Stories','Content Kit'],
+      wa:'Hi! I\'m interested in Social Media Design.'
+    },
+    {
+      name:'Brand Paste-Up & Print',
+      desc:'Brochures, flyers, menus, posters, and packaging. Print-ready files with proper bleeds, marks, and attention to every detail.',
+      tags:['Flyers','Brochures','Packaging','Menus','Posters'],
+      wa:'Hi! I\'m interested in Print Design.'
+    },
+    {
+      name:'UI Design',
+      desc:'Mobile app and web UI design from wireframes to polished high-fidelity screens. Optimised for usability and aesthetics.',
+      tags:['Mobile App','Web UI','Wireframes','Figma','Prototypes'],
+      wa:'Hi! I\'m interested in UI Design.'
+    },
+    {
+      name:'Brochure & Presentation',
+      desc:'Pitch decks, company profiles, lookbooks, and product catalogues. Beautiful documents that close deals and tell your story.',
+      tags:['Pitch Deck','Lookbook','Catalogue','Company Profile'],
+      wa:'Hi! I\'m interested in Brochure & Presentation design.'
+    },
+  ];
+
+  const list = document.getElementById('servicesList');
+  list.innerHTML = services.map((s, i) => `
+    <div class="service-row">
+      <div class="svc-num">0${i+1}</div>
+      <div class="svc-body">
+        <div class="svc-name">${s.name}</div>
+        <div class="svc-desc">${s.desc}</div>
+        <div class="svc-tags">${s.tags.map(t=>`<span class="svc-tag">${t}</span>`).join('')}</div>
+      </div>
+      <a href="${JROY.waLink(s.wa)}" target="_blank" class="svc-cta">Get Service →</a>
+    </div>
+  `).join('');
+
+  document.getElementById('designCta').href = JROY.waLink("Hi! I'd like to discuss a design project with JRoy Creativity.");
+</script>
+</body>
+</html>

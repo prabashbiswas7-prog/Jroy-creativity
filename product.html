@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Product — JRoy Creativity</title>
+<meta name="description" id="pageDesc" content="Shop elegant jewellery at JRoy Creativity.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── PRODUCT PAGE SPECIFIC ── */
+.product-page {
+  padding:60px 6% 96px;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:80px; align-items:start;
+}
+
+/* LEFT — image panel */
+.product-gallery {}
+.product-main-img {
+  aspect-ratio:4/5; background:var(--blush);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden; margin-bottom:12px;
+}
+.product-main-img-icon {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(100px,14vw,160px);
+  color:rgba(188,142,51,0.2);
+  transition:transform .4s;
+  display:block;
+}
+.product-main-img:hover .product-main-img-icon { transform:scale(1.06); }
+.product-main-badge {
+  position:absolute; top:16px; left:16px;
+  font-size:8px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; padding:5px 12px;
+  background:var(--gold); color:var(--white);
+}
+.product-thumbnails {
+  display:flex; gap:10px;
+}
+.product-thumb {
+  width:72px; height:72px; background:var(--blush);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; border:2px solid transparent;
+  transition:border-color .2s;
+}
+.product-thumb.active { border-color:var(--gold); }
+.product-thumb span {
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px; color:rgba(188,142,51,0.3);
+}
+
+/* RIGHT — product info */
+.product-info {}
+.product-breadcrumb {
+  display:flex; align-items:center; gap:8px;
+  font-size:10px; font-weight:500; letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--charcoal);
+  opacity:0.5; margin-bottom:22px;
+}
+.product-breadcrumb a {
+  text-decoration:none; color:inherit; transition:color .2s;
+}
+.product-breadcrumb a:hover { color:var(--gold); }
+.product-breadcrumb-sep { opacity:0.4; }
+
+.product-info-cat {
+  font-size:9.5px; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; color:var(--gold); margin-bottom:10px;
+}
+.product-info-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,5vw,54px); font-weight:300;
+  color:var(--black); line-height:1.05; margin-bottom:16px;
+}
+.product-info-price {
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px; color:var(--black);
+  margin-bottom:28px;
+}
+.product-info-price span {
+  font-family:'Montserrat',sans-serif;
+  font-size:11px; font-weight:300; letter-spacing:1px;
+  color:var(--charcoal); margin-left:8px;
+}
+.product-info-desc {
+  font-size:13px; font-weight:300; line-height:1.9;
+  color:var(--charcoal); margin-bottom:32px;
+  padding-bottom:32px; border-bottom:1px solid var(--border);
+}
+
+/* SIZE / VARIANT */
+.product-option-label {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--black); margin-bottom:10px;
+}
+.product-size-grid { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+.size-btn {
+  width:44px; height:44px;
+  border:1px solid var(--border); background:none;
+  font-size:11px; font-weight:500; font-family:'Montserrat',sans-serif;
+  color:var(--charcoal); cursor:pointer; transition:all .2s;
+}
+.size-btn:hover, .size-btn.active {
+  border-color:var(--gold); color:var(--gold); background:var(--gold-pale);
+}
+
+/* CTA BUTTONS */
+.product-cta-group { display:flex; flex-direction:column; gap:12px; margin-bottom:28px; }
+.btn-wa-order {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:16px 32px; background:#25D366; color:var(--white);
+  font-size:9.5px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; text-decoration:none;
+  transition:background .25s;
+}
+.btn-wa-order:hover { background:#128C7E; }
+.btn-wa-order svg { width:18px; height:18px; fill:var(--white); flex-shrink:0; }
+.btn-enquire {
+  display:flex; align-items:center; justify-content:center;
+  padding:15px 32px; border:1px solid var(--black);
+  color:var(--black); text-decoration:none;
+  font-size:9.5px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; transition:all .25s;
+}
+.btn-enquire:hover { background:var(--black); color:var(--white); }
+
+/* PRODUCT META */
+.product-meta { display:flex; flex-direction:column; gap:12px; }
+.product-meta-row {
+  display:flex; gap:0;
+  padding:12px 0; border-bottom:1px solid var(--border);
+}
+.product-meta-key {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--charcoal);
+  min-width:120px;
+}
+.product-meta-val {
+  font-size:12px; font-weight:300; color:var(--charcoal);
+}
+
+/* ── RELATED PRODUCTS ── */
+.related-section { padding:80px 6%; background:var(--blush); }
+.related-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+  margin-top:40px;
+}
+
+/* ── NOT FOUND ── */
+.not-found {
+  text-align:center; padding:120px 6%;
+}
+.not-found h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px; font-weight:300; color:var(--black);
+  margin-bottom:16px;
+}
+.not-found p {
+  font-size:13px; font-weight:300; color:var(--charcoal);
+  margin-bottom:32px;
+}
+
+/* RESPONSIVE */
+@media (max-width:900px) {
+  .product-page { grid-template-columns:1fr; gap:40px; padding:40px 5% 72px; }
+  .related-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:480px) {
+  .related-grid { grid-template-columns:repeat(2,1fr); gap:14px; }
+}
+</style>
+</head>
+<body>
+<main>
+  <div id="productContent">
+    <!-- injected by JS -->
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  injectNav('shop');
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const product = getProductById(id);
+  const content = document.getElementById('productContent');
+
+  if (!product) {
+    content.innerHTML = `
+      <div class="not-found">
+        <h2>Product not found</h2>
+        <p>The product you're looking for doesn't exist or has been removed.</p>
+        <a href="shop.html" class="btn btn-black">Back to Shop →</a>
+      </div>`;
+    injectFooter();
+  } else {
+    // Update page title + meta
+    document.getElementById('pageTitle').textContent = `${product.name} — JRoy Creativity`;
+    document.getElementById('pageDesc').content = product.desc;
+
+    const related = getRelated(product);
+    const hasSizes = product.cat === 'rings';
+    const waMsg = `Hi! I'd like to order the "${product.name}" (₹${product.price.toLocaleString('en-IN')}). Is it available?`;
+
+    content.innerHTML = `
+      <!-- PRODUCT MAIN -->
+      <div class="product-page">
+        <!-- Gallery -->
+        <div class="product-gallery">
+          <div class="product-main-img" style="background:${product.bg}">
+            <span class="product-main-img-icon">${product.icon}</span>
+            ${product.badge ? `<span class="product-main-badge">${product.badge}</span>` : ''}
+          </div>
+          <div class="product-thumbnails">
+            <div class="product-thumb active"><span>${product.icon}</span></div>
+            <div class="product-thumb"><span>◇</span></div>
+            <div class="product-thumb"><span>✦</span></div>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="product-info">
+          <div class="product-breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="product-breadcrumb-sep">›</span>
+            <a href="shop.html">Shop</a>
+            <span class="product-breadcrumb-sep">›</span>
+            <a href="shop.html?cat=${product.cat}">${product.catLabel}</a>
+            <span class="product-breadcrumb-sep">›</span>
+            <span>${product.name}</span>
+          </div>
+
+          <div class="product-info-cat">${product.catLabel}</div>
+          <h1 class="product-info-name">${product.name}</h1>
+          <div class="product-info-price">
+            ₹${product.price.toLocaleString('en-IN')}
+            <span>incl. taxes</span>
+          </div>
+          <p class="product-info-desc">${product.desc}</p>
+
+          ${hasSizes ? `
+          <div class="product-option-label">Select Size (US)</div>
+          <div class="product-size-grid">
+            ${['5','6','7','8','9','10'].map(s => `<button class="size-btn" onclick="selectSize(this)">${s}</button>`).join('')}
+          </div>` : ''}
+
+          <div class="product-cta-group">
+            <a href="${JROY.waLink(waMsg)}" target="_blank" class="btn-wa-order">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Order on WhatsApp
+            </a>
+            <a href="${JROY.waLink('Hi! I have a question about the ' + product.name + '.')}" target="_blank" class="btn-enquire">Ask a Question</a>
+          </div>
+
+          <div class="product-meta">
+            <div class="product-meta-row">
+              <span class="product-meta-key">Material</span>
+              <span class="product-meta-val">${product.material}</span>
+            </div>
+            <div class="product-meta-row">
+              <span class="product-meta-key">Weight</span>
+              <span class="product-meta-val">${product.weight}</span>
+            </div>
+            <div class="product-meta-row">
+              <span class="product-meta-key">Size / Fit</span>
+              <span class="product-meta-val">${product.size}</span>
+            </div>
+            <div class="product-meta-row">
+              <span class="product-meta-key">Care</span>
+              <span class="product-meta-val">${product.care}</span>
+            </div>
+            <div class="product-meta-row">
+              <span class="product-meta-key">Delivery</span>
+              <span class="product-meta-val">3–7 working days after WhatsApp confirmation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RELATED PRODUCTS -->
+      ${related.length ? `
+      <div class="related-section">
+        <div class="section-eyebrow">You may also like</div>
+        <h2 class="section-title" style="margin-bottom:0">More from <em>${product.catLabel}</em></h2>
+        <div class="related-grid">
+          ${related.map(renderProductCard).join('')}
+        </div>
+      </div>` : ''}
+    `;
+
+    injectFooter();
+  }
+
+  function selectSize(btn) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

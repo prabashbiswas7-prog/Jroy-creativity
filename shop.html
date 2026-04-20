@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Jewellery — JRoy Creativity</title>
+<meta name="description" content="Shop handpicked elegant jewellery — Earrings, Rings, Necklaces, and Casual Use pieces. Order via WhatsApp.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── SHOP PAGE SPECIFIC ── */
+.shop-toolbar {
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+  padding:28px 6% 0;
+  background:var(--off-white);
+}
+.cat-tabs-shop {
+  display:flex; flex-wrap:wrap; gap:0;
+  border-bottom:1px solid var(--border);
+}
+.cat-tab-s {
+  font-size:9.5px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--charcoal);
+  padding:11px 20px; cursor:pointer;
+  border:none; border-bottom:2px solid transparent;
+  background:none; font-family:'Montserrat',sans-serif;
+  transition:all .2s; margin-bottom:-1px;
+}
+.cat-tab-s:hover, .cat-tab-s.active {
+  color:var(--gold); border-bottom-color:var(--gold);
+}
+.shop-count {
+  font-size:10px; font-weight:500; letter-spacing:1px;
+  color:var(--charcoal); opacity:0.55;
+}
+
+.shop-grid-wrap { padding:36px 6% 80px; }
+.shop-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+}
+
+/* ── BANNER ── */
+.shop-banner {
+  background:var(--black);
+  padding:52px 6%;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:24px; flex-wrap:wrap;
+}
+.shop-banner-text {}
+.shop-banner-tag {
+  font-size:9px; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:10px;
+}
+.shop-banner-heading {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4vw,44px); font-weight:300;
+  color:var(--white); line-height:1.1;
+}
+.shop-banner-heading em { font-style:italic; color:var(--gold); }
+.shop-banner-desc {
+  font-size:12px; font-weight:300; line-height:1.8;
+  color:rgba(255,255,255,0.45); max-width:360px; margin-top:8px;
+}
+
+/* RESPONSIVE */
+@media (max-width:900px) {
+  .shop-grid { grid-template-columns:repeat(2,1fr); gap:16px; }
+}
+@media (max-width:480px) {
+  .shop-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+}
+</style>
+</head>
+<body>
+<main>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg-text">Shop</div>
+    <div class="page-hero-label">Our Collection</div>
+    <h1 class="page-hero-title anim-fade-up">Jewellery for<br>every <em>moment</em></h1>
+    <p class="page-hero-sub anim-fade-up anim-delay-1">
+      Handpicked pieces — earrings, rings, necklaces, and everyday wear. Every piece is just one WhatsApp message away.
+    </p>
+  </div>
+
+  <!-- SHOP BANNER -->
+  <div class="shop-banner">
+    <div class="shop-banner-text">
+      <div class="shop-banner-tag">✦ How to Order</div>
+      <div class="shop-banner-heading">See something<br>you <em>love?</em></div>
+      <div class="shop-banner-desc">Tap the WhatsApp icon on any product or open the product page and tap "Order on WhatsApp". We'll confirm availability and delivery.</div>
+    </div>
+    <a id="shopWaBtn" href="#" target="_blank" class="btn btn-wa" style="font-size:9.5px; letter-spacing:2px; text-transform:uppercase; font-weight:700; padding:14px 28px;">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;fill:white;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Chat to Order
+    </a>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="shop-toolbar">
+    <div class="cat-tabs-shop">
+      <button class="cat-tab-s active" data-cat="all">All</button>
+      <button class="cat-tab-s" data-cat="earrings">Earrings</button>
+      <button class="cat-tab-s" data-cat="rings">Rings</button>
+      <button class="cat-tab-s" data-cat="necklace">Necklace</button>
+      <button class="cat-tab-s" data-cat="casual">Casual Use</button>
+    </div>
+    <span class="shop-count" id="shopCount"></span>
+  </div>
+
+  <!-- GRID -->
+  <div class="shop-grid-wrap">
+    <div class="shop-grid" id="shopGrid"></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div class="cta-strip-text">Looking for<br>something <em style="font-style:italic;font-family:'Cormorant Garamond',serif">custom?</em></div>
+    <a id="shopCtaBtn" href="#" target="_blank" class="btn btn-white-fill">Chat with Us →</a>
+  </div>
+
+</main>
+
+<script src="js/main.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  injectNav('shop');
+  injectFooter();
+
+  function renderShop(cat) {
+    const items = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
+    document.getElementById('shopGrid').innerHTML = items.map(renderProductCard).join('');
+    document.getElementById('shopCount').textContent = `${items.length} piece${items.length !== 1 ? 's' : ''}`;
+  }
+
+  document.querySelectorAll('.cat-tab-s').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cat-tab-s').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderShop(btn.dataset.cat);
+    });
+  });
+
+  renderShop('all');
+
+  document.getElementById('shopWaBtn').href = JROY.waLink("Hi! I'd like to browse and order jewellery from JRoy Creativity.");
+  document.getElementById('shopCtaBtn').href = JROY.waLink("Hi! I'm looking for a custom jewellery piece.");
+</script>
+</body>
+</html>

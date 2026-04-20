@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JRoy Creativity — Creative Design & Elegant Jewellery</title>
+<meta name="description" content="JRoy Creativity — Creative graphic design services and handpicked elegant jewellery. Logos, branding, social media, print, and jewellery for every occasion.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── HOME-SPECIFIC ── */
+.hero {
+  display:grid; grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - 72px); overflow:hidden;
+}
+.hero-left {
+  display:flex; flex-direction:column; justify-content:center;
+  padding:80px 7% 80px 6%; position:relative; overflow:hidden;
+}
+.hero-watermark {
+  position:absolute; right:-8%; top:50%; transform:translateY(-50%);
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(160px,22vw,300px); font-weight:300;
+  color:rgba(188,142,51,0.05); pointer-events:none; line-height:1;
+  white-space:nowrap;
+}
+.hero-eyebrow {
+  font-size:9.5px; font-weight:600; letter-spacing:4px;
+  text-transform:uppercase; color:var(--gold);
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:18px;
+}
+.hero-eyebrow::before { content:''; width:28px; height:1px; background:var(--gold); }
+.hero-h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(50px,5.5vw,76px); font-weight:300;
+  color:var(--black); line-height:1.06; margin-bottom:20px;
+}
+.hero-h1 em { font-style:italic; color:var(--gold); }
+.hero-desc {
+  font-size:12.5px; font-weight:300; line-height:1.85;
+  color:var(--charcoal); max-width:380px; margin-bottom:44px;
+}
+.hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
+
+.hero-right {
+  background:var(--blush); position:relative;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.hero-right-bg {
+  position:absolute; inset:0;
+  background:linear-gradient(140deg, #f1e4e4 0%, #e4d2d2 100%);
+}
+.hero-visual {
+  position:relative; z-index:1;
+  display:flex; flex-direction:column; align-items:center;
+}
+.hero-jewel-icon {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(100px,14vw,180px);
+  color:rgba(188,142,51,0.18);
+  line-height:1; display:block;
+}
+.hero-visual-cap {
+  font-size:9px; font-weight:500; letter-spacing:4px;
+  text-transform:uppercase; color:rgba(61,59,58,0.5);
+  margin-top:-8px;
+}
+.hero-spin-badge {
+  position:absolute; bottom:36px; right:36px;
+  width:96px; height:96px;
+  border:1px solid var(--gold); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:8px; font-weight:600; letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--gold);
+  text-align:center; line-height:1.5;
+  animation:spinSlow 24s linear infinite;
+}
+.hero-stats {
+  position:absolute; bottom:36px; left:6%;
+  display:flex; gap:32px;
+}
+.hero-stat-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px; color:var(--black); line-height:1;
+}
+.hero-stat-label {
+  font-size:9px; font-weight:500; letter-spacing:2px;
+  text-transform:uppercase; color:var(--charcoal);
+  opacity:0.6; margin-top:2px;
+}
+
+/* ── SERVICES GRID ── */
+.services-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:2px; background:var(--border);
+}
+.service-card {
+  background:var(--off-white); padding:44px 36px;
+  position:relative; overflow:hidden; cursor:default;
+  transition:background .3s;
+}
+.service-card::after {
+  content:''; position:absolute; bottom:0; left:0;
+  width:100%; height:2px; background:var(--gold);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .4s;
+}
+.service-card:hover { background:var(--white); }
+.service-card:hover::after { transform:scaleX(1); }
+.service-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:54px; font-weight:300;
+  color:rgba(188,142,51,0.12); line-height:1; margin-bottom:14px;
+}
+.service-name {
+  font-size:11px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--black); margin-bottom:10px;
+}
+.service-desc {
+  font-size:12px; font-weight:300; line-height:1.8; color:var(--charcoal);
+}
+
+/* ── PORTFOLIO STRIP ── */
+.portfolio-strip { background:var(--black); padding:96px 6%; }
+.portfolio-grid {
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:12px; height:440px;
+}
+.port-item {
+  position:relative; overflow:hidden; cursor:pointer;
+}
+.port-item:first-child { grid-row:span 2; }
+.port-item-bg {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+}
+.port-item-bg span {
+  font-family:'Cormorant Garamond',serif;
+  font-size:72px; color:rgba(255,255,255,0.04);
+}
+.port-item-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 55%);
+  opacity:0; transition:opacity .35s;
+}
+.port-item:hover .port-item-overlay { opacity:1; }
+.port-item-label {
+  position:absolute; bottom:20px; left:20px;
+  font-size:9.5px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--white);
+  opacity:0; transform:translateY(8px);
+  transition:all .35s;
+}
+.port-item:hover .port-item-label { opacity:1; transform:translateY(0); }
+.pi-1 { background:linear-gradient(135deg,#2a2318,#160f08); }
+.pi-2 { background:linear-gradient(135deg,#3a2e1c,#1e1608); }
+.pi-3 { background:linear-gradient(135deg,#1d1d1d,#0a0a0a); }
+.pi-4 { background:linear-gradient(135deg,#2c2318,#18110a); }
+
+/* ── SHOP PREVIEW ── */
+.shop-preview { background:var(--blush); padding:96px 6%; }
+.shop-preview-header {
+  display:flex; align-items:flex-end; justify-content:space-between;
+  margin-bottom:48px; flex-wrap:wrap; gap:20px;
+}
+.cat-tabs {
+  display:flex; border-bottom:1px solid var(--border);
+  margin-bottom:44px; flex-wrap:wrap;
+}
+.cat-tab {
+  font-size:9.5px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--charcoal);
+  padding:11px 22px; cursor:pointer;
+  border:none; border-bottom:2px solid transparent;
+  background:none; font-family:'Montserrat',sans-serif;
+  transition:all .2s; margin-bottom:-1px;
+}
+.cat-tab:hover, .cat-tab.active {
+  color:var(--gold); border-bottom-color:var(--gold);
+}
+.products-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width:960px) {
+  .hero { grid-template-columns:1fr; }
+  .hero-right { min-height:280px; }
+  .hero-stats { position:static; margin-top:32px; }
+  .services-grid { grid-template-columns:repeat(2,1fr); }
+  .products-grid { grid-template-columns:repeat(2,1fr); }
+  .portfolio-grid { grid-template-columns:1fr 1fr; height:auto; }
+  .port-item:first-child { grid-row:span 1; grid-column:span 2; height:200px; }
+  .port-item { height:140px; }
+}
+@media (max-width:600px) {
+  .services-grid { grid-template-columns:1fr; }
+  .products-grid { grid-template-columns:repeat(2,1fr); gap:14px; }
+  .hero-left { padding:52px 5% 44px; }
+}
+</style>
+</head>
+<body>
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-watermark">JR</div>
+      <div class="hero-eyebrow anim-fade-up">Creative Design & Elegant Jewellery</div>
+      <h1 class="hero-h1 anim-fade-up anim-delay-1">
+        Design that<br><em>Speaks</em><br>Your Brand
+      </h1>
+      <p class="hero-desc anim-fade-up anim-delay-2">
+        Where creative design meets timeless jewellery. From brand identities to handcrafted pieces — every detail is intentional.
+      </p>
+      <div class="hero-btns anim-fade-up anim-delay-3">
+        <a href="design.html" class="btn btn-black">Hire Me</a>
+        <a href="shop.html"   class="btn btn-outline-black">Shop Now</a>
+      </div>
+      <div class="hero-stats anim-fade-up anim-delay-4">
+        <div>
+          <div class="hero-stat-num">50+</div>
+          <div class="hero-stat-label">Clients</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">5</div>
+          <div class="hero-stat-label">Services</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">3yr</div>
+          <div class="hero-stat-label">Experience</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-bg"></div>
+      <div class="hero-visual">
+        <span class="hero-jewel-icon">◈</span>
+        <span class="hero-visual-cap">Handcrafted with love</span>
+      </div>
+      <div class="hero-spin-badge">Est.<br>JRoy<br>Studio</div>
+    </div>
+  </section>
+
+  <!-- WHAT I DO -->
+  <section class="section">
+    <div class="section-eyebrow">What I Do</div>
+    <h2 class="section-title">Services built around<br><em>your vision</em></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-name">Logo & Identity</div>
+        <div class="service-desc">Brand identities that are distinctive, strategic, and built to last. From mark to full brand system.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-name">Social Media</div>
+        <div class="service-desc">Posts, stories, reels thumbnails, and full content kits. Get noticed across every platform.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-name">Brand Paste-Up</div>
+        <div class="service-desc">Brochures, flyers, menus, packaging — print-ready designs that make people stop and look.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-name">UI Design</div>
+        <div class="service-desc">App screens, web layouts, and component systems with clean structure and sharp aesthetics.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-name">Print Design</div>
+        <div class="service-desc">Business cards, banners, merchandise, and stationery. Everything you hand to the world.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-name">Brochure & Docs</div>
+        <div class="service-desc">Pitch decks, catalogues, and lookbooks that close deals and tell your story with style.</div>
+      </div>
+    </div>
+    <div style="margin-top:40px; text-align:center;">
+      <a href="design.html" class="btn btn-outline-gold">See All Services →</a>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO STRIP -->
+  <section class="portfolio-strip">
+    <div class="section-eyebrow section-eyebrow--light">My Work — Graphic Work</div>
+    <h2 class="section-title section-title--light" style="margin-bottom:40px;">A glimpse of <em>what's possible</em></h2>
+    <div class="portfolio-grid">
+      <div class="port-item pi-1">
+        <div class="port-item-bg"><span>Brand</span></div>
+        <div class="port-item-overlay"></div>
+        <div class="port-item-label">Brand Identity</div>
+      </div>
+      <div class="port-item pi-2">
+        <div class="port-item-bg"><span>Social</span></div>
+        <div class="port-item-overlay"></div>
+        <div class="port-item-label">Social Media</div>
+      </div>
+      <div class="port-item pi-3">
+        <div class="port-item-bg"><span>UI</span></div>
+        <div class="port-item-overlay"></div>
+        <div class="port-item-label">UI Design</div>
+      </div>
+      <div class="port-item pi-4">
+        <div class="port-item-bg"><span>Print</span></div>
+        <div class="port-item-overlay"></div>
+        <div class="port-item-label">Print & Brochure</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP PREVIEW -->
+  <section class="shop-preview">
+    <div class="shop-preview-header">
+      <div>
+        <div class="section-eyebrow">Shop with us</div>
+        <h2 class="section-title" style="margin-bottom:0;">Jewellery for every <em>moment</em></h2>
+      </div>
+      <a href="shop.html" class="btn btn-outline-black">View All →</a>
+    </div>
+    <div class="cat-tabs" id="catTabs">
+      <button class="cat-tab active" data-cat="all">All</button>
+      <button class="cat-tab" data-cat="earrings">Earrings</button>
+      <button class="cat-tab" data-cat="rings">Rings</button>
+      <button class="cat-tab" data-cat="necklace">Necklace</button>
+      <button class="cat-tab" data-cat="casual">Casual Use</button>
+    </div>
+    <div class="products-grid" id="homeGrid"></div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div class="cta-strip-text">Ready to work<br>together?</div>
+    <a href="contact.html" class="btn btn-white-fill">Get in Touch →</a>
+  </div>
+
+</main>
+
+<script src="js/main.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  injectNav('home');
+  injectFooter();
+
+  // Render products
+  function renderHome(cat) {
+    const grid = document.getElementById('homeGrid');
+    let items = cat === 'all' ? PRODUCTS.slice(0,8) : PRODUCTS.filter(p=>p.cat===cat).slice(0,8);
+    grid.innerHTML = items.map(renderProductCard).join('');
+  }
+
+  document.querySelectorAll('.cat-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderHome(btn.dataset.cat);
+    });
+  });
+
+  renderHome('all');
+</script>
+</body>
+</html>
