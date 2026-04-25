@@ -336,6 +336,7 @@ function initNav() {
   // Mobile menu toggle
   burger?.addEventListener('click', () => {
     burger.classList.toggle('open');
+    document.body.style.overflow = burger.classList.contains('open') ? 'hidden' : '';
     mobileMenu?.classList.toggle('open');
   });
 }
