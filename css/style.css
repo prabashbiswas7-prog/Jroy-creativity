@@ -319,37 +319,37 @@ main { padding-top:72px; }
   cursor:pointer;
   transition:transform .4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow .4s cubic-bezier(0.2, 0.8, 0.2, 1);
   position:relative; text-decoration:none; display:flex; flex-direction:column;
-  border-radius:12px; overflow:hidden;
-  box-shadow:0 4px 20px rgba(0,0,0,0.04);
+  border-radius:4px; overflow:hidden;
+  border: 1px solid #eaeaea;
+  box-shadow:none;
 }
 .product-card:hover {
-  transform:translateY(-8px);
-  box-shadow:0 24px 48px rgba(0,0,0,0.12);
+  box-shadow:0 12px 24px rgba(0,0,0,0.08);
 }
 .product-card-img {
-  aspect-ratio:3/4; position:relative; overflow:hidden;
+  aspect-ratio:1/1; position:relative; overflow:hidden;
   display:flex; align-items:center; justify-content:center;
-  background:linear-gradient(145deg, var(--blush), var(--gold-pale));
+  background:var(--white);
 }
-.product-card-icon {
-  font-family:'Cormorant Garamond', serif;
-  font-size:80px; color:rgba(188,142,51,0.3);
-  transition:transform .5s cubic-bezier(0.2, 0.8, 0.2, 1), color .3s;
+.product-img-tag {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.product-card:hover .product-card-icon {
-  transform:scale(1.15);
-  color:rgba(188,142,51,0.6);
+.product-card:hover .product-img-tag {
+  transform:scale(1.05);
 }
+
+
 .product-badge {
-  position:absolute; top:16px; left:16px;
+  position:absolute; top:12px; left:12px;
   font-size:7.5px; font-weight:700; letter-spacing:1.5px;
-  text-transform:uppercase; padding:6px 12px;
+  text-transform:uppercase; padding:4px 10px;
   background:var(--gold); color:var(--white);
-  border-radius:4px;
 }
 .product-card-body {
-  padding:24px 20px;
+  padding:20px 16px;
   display:flex; flex-direction:column; flex-grow:1;
+  align-items:center; text-align:center;
 }
 .product-cat-label {
   font-size:8.5px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase;
@@ -357,28 +357,18 @@ main { padding-top:72px; }
 }
 .product-name {
   font-family:'Cormorant Garamond', serif;
-  font-size:24px; font-weight:400; color:var(--black);
-  margin-bottom:16px; line-height:1.2; flex-grow:1;
+  font-size:20px; font-weight:600; color:var(--black);
+  margin-bottom:12px; line-height:1.3;
 }
 .product-footer {
-  display:flex; align-items:center; justify-content:space-between;
-  margin-top:auto;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  margin-top:auto; width: 100%;
 }
 .product-price {
-  font-family:'Cormorant Garamond', serif;
-  font-size:24px; font-weight:500; color:var(--black);
+  font-family:'Inter', sans-serif;
+  font-size:14px; font-weight:700; color:var(--gold);
 }
-.product-wa-btn {
-  width:42px; height:42px;
-  background:var(--black); border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  text-decoration:none; transition:background .3s, transform .3s;
-}
-.product-wa-btn:hover {
-  background:#25D366;
-  transform:scale(1.1);
-}
-.product-wa-btn svg { width:18px; height:18px; fill:var(--white); }
+
 
 /* ── WHATSAPP ICON SVG ───────────────────────────── */
 .wa-svg { width:100%; height:100%; fill:currentColor; }
@@ -419,4 +409,49 @@ main { padding-top:72px; }
   .section-title { font-size: 32px; margin-bottom: 32px; }
   .page-hero { padding:56px 6%; }
   .page-hero-title { font-size:36px; }
+}
+
+
+/* New Product Card Details */
+.product-rating {
+  margin-bottom: 8px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.product-rating .stars {
+  color: #000; /* As requested to match site, or gold if preferred, checking image it's dark/black */
+}
+.product-rating .reviews {
+  color: #888;
+}
+
+.product-pricing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.product-price-old {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.product-wa-btn {
+  width: 100%; height: 36px;
+  background: var(--black); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; transition: background .3s;
+  color: white; gap: 8px; font-size: 13px; font-weight: 500;
+}
+.product-wa-btn svg {
+  width: 16px; height: 16px; fill: currentColor;
+}
+.product-wa-btn:hover {
+  background: #25D366;
 }
